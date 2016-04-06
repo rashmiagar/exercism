@@ -1,17 +1,12 @@
 class Raindrops
-	VERSION = 1
-	def self.convert param
-		output = ""
-	
-		if param % 3 == 0
-			output << "Pling"
-		end
-		if param % 5 == 0
-			output << "Plang"
-		end
-		if param % 7 == 0
-			output << "Plong"
-		end
-		output.empty? ? param.to_s : output
-	end
+  VERSION = 1
+  def self.convert param
+    hash = {Pling: 3, Plang: 5, Plong: 7}
+    output = ""
+
+    hash.each{ |key, index|
+      param % index == 0 ? (output << key.to_s) :  ""
+    }
+    output.empty? ? param.to_s : output
+  end
 end
